@@ -228,3 +228,22 @@ class AllAwardCacesView(View):
             more_cases = serializers.serialize("json", all_award_cases)
             return HttpResponse('{"status":"success", "msg":"success", "list":' + more_cases + '}',
                                 content_type='application/json')
+
+
+class GoldenSpiderPollView(View):
+    """
+    投票
+    """
+
+    def get(self, request, iterm_id):
+        poll = request.COOKIES.get('poll'+iterm_id)
+        if poll == 'y':
+            return HttpResponse('{"status":"fail", "msg":"fail"}', content_type='application/json')
+        else:
+            iterm_poll = AwardIterm.objects.get(id=iterm_id)
+            iterm_poll.fav_nums += 1
+            iterm_poll.save()
+
+            response = HttpResponse('{"status":"success", "msg":"success"}', content_type='application/json')
+            response.set_cookie('poll'+iterm_id, 'y')
+            return response

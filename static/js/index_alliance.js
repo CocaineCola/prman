@@ -13,7 +13,6 @@ $(function() {
     // 金蜘蛛奖 点击显示全部 展示全部参选作品
     $('.view_all').click(function(e) {
         sort_id = $('.view_all').attr("id");
-        console.log(sort_id);
         $.ajax({
             type: 'GET',
             url: '/all_award_cases/'+sort_id+'/',
@@ -39,6 +38,28 @@ $(function() {
 
                 /*隐藏more按钮*/
                 $(".view_all").hide();
+            },
+            error: function(xhr, type){
+                alert('服务器异常!');
+            }
+    });
+    });
+
+    // 金蜘蛛奖参赛作品点赞
+    $('.poll').click(function(e) {
+        var iterm_id = $(this).attr("id");
+        $.ajax({
+            type: 'GET',
+            url: '/poll/'+iterm_id+'/',
+            dataType: 'json',
+            success: function(response){
+                var msg = response['msg'];
+                if(msg == 'fail') {
+                    alert('您已投票过!');
+                } else {
+                    var id = 'poll_num-'+iterm_id;
+                    $('#'+id).html(parseInt($('#'+id).text())+1);
+                }
             },
             error: function(xhr, type){
                 alert('服务器异常!');

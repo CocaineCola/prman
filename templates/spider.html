@@ -109,9 +109,19 @@
                 <table class="award_table"><tr>
                 {% for iterm in sort.get_iterms %}
                     <td>
-                        <p>
-                            <img style="width: 24em;height: 35em;margin-right: 1em;" src="{{ MEDIA_URL }}{{ iterm.image }}">
-                        </p>
+                        <div class="back_img">
+                            <img style="width: 24em;height: 35em;" src="{{ MEDIA_URL }}{{ iterm.image }}">
+                            <div class='text_flow_img'>
+                                <span>{{ iterm.title }}</span>
+                                <span id="poll_num-{{ iterm.id }}" style="color: red;">{{ iterm.fav_nums }}</span>
+                                <a href="javascript:void(0);">
+                                    <img id="{{ iterm.id }}" class="poll" src="{% static 'images/poll.png' %}">
+                                </a>
+
+                            </div>
+                        </div>
+
+
                     </td>
                 {% endfor %}
                 </tr>

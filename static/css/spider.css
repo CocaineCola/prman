@@ -78,3 +78,33 @@ body {
 a {
     text-decoration-line: none;
 }
+
+.back_img {
+    position: relative;
+    margin-right: 1em;
+    width: 24em;
+}
+
+.text_flow_img {
+    position: absolute;
+    width: 100%;
+    height: 3em;
+    left: 0px;
+    bottom: 0;
+    text-align: center;
+    font-size: initial;
+    background-color: #00000080;
+    padding-top: 1em;
+}
+
+.text_flow_img span {
+    font-weight: bold;
+    color: white;
+}
+
+.poll {
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    top: 0.7em;
+}
