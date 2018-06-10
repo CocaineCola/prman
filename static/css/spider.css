@@ -1,0 +1,80 @@
+body {
+    background: black url('../images/spider.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.news_slide {
+    background-color: #392E2F;
+}
+
+.head_img {
+    height: 79em;
+}
+
+.spider_text {
+    text-align: left;
+    font-size: 2em;
+    color: white;
+    font-weight: bold;
+}
+
+.top_text {
+    margin-top: 80em;
+    margin-bottom: 10em;
+    height: 20em;
+}
+
+.sponsor {
+    text-align: center;
+    margin-left: 34%;
+}
+
+.sub_title {
+    margin-top: 10em;
+    margin-bottom: 4em;
+}
+
+.view_all {
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    background-color: #392E2F;
+    width: 8em;
+    margin-left: 50%;
+}
+
+.case ul {
+    list-style-type: none;
+}
+
+.sub_title_detail {
+    text-align: center;
+}
+
+.contact_details_spider ul img {
+    width: 3em;
+    height: 3em;
+    float: left;
+}
+
+.contact_details_spider ul{
+    list-style-type: none;
+    float: left;
+    padding-right: 5em;
+}
+
+.top_text div {
+    float: left;
+}
+
+.left_label, .right_label {
+    background-color: #392E2F;
+    padding: 0em 1em 0em 1em;
+    border: 2px solid #a1a1a1;
+    text-align: center;
+}
+
+a {
+    text-decoration-line: none;
+}

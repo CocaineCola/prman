@@ -1,0 +1,271 @@
+{% extends 'base_spider.html' %}
+{% load staticfiles %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/response.css' %}">
+<link rel="stylesheet" href="{% static 'css/spider.css' %}">
+{% endblock %}
+
+{% block title %}金蜘蛛奖{% endblock %}
+
+{% block content %}
+
+<!-- 头部开始 -->
+<div class="top_text">
+    <div class="left_label">
+        <ul style="list-style-type: none;padding-left: 0px;">
+            <li><a href="#spider-intro"><span class="spider_text">金蜘蛛奖介绍</span><hr/></a></li>
+            <li><a href="#spider-news"><span class="spider_text">评奖动态</span><hr/></a></li>
+            <li><a href="#spider-setting"><span class="spider_text">奖项设置</span><hr/></a></li>
+            <li><a href="#spider-specialist"><span class="spider_text">专家评审团</span><hr/></a></li>
+            <li><a href="#spider-history"><span class="spider_text">往期回顾</span><hr/></a></li>
+            <li><a href="#spider-process"><span class="spider_text">评选流程</span><hr/></a></li>
+            <li><a href="#spider-friends"><span class="spider_text">合作伙伴</span><hr/></a></li>
+            <li><a href="#spider-contact"><span class="spider_text">联系我们</span><hr/></a></li>
+        </ul>
+    </div>
+
+    <div class="sponsor">
+        <p class="spider_text">主办方：{{ award.sponsor }}</p>
+        <p class="spider_text" style="margin-bottom: 4em">联合主办方：{{ award.co_sponsor }}</p>
+    </div>
+
+    <div class="right_label" style="float: right;">
+        <ul style="list-style-type: none;padding-left: 0px;">
+            {% for sort in award_sorts %}
+            <li>
+                <a href="#{{ sort.id }}-{{ sort.order }}"><span class="spider_text">{{ sort.title }}</span></a><hr/>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="sponsor">
+        <p class="spider_text">时间：{{ award.date }}</p>
+        <p class="spider_text">地点：{{ award.address }}</p>
+    </div>
+
+</div>
+<!-- 头部结束 -->
+
+<!-- 内容开始 -->
+<div class="content">
+
+    <!-- 金蜘蛛介绍开始 -->
+    <div class="pure-g" id="spider-intro">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_intro.png' %}">
+        </div>
+        <div>
+            <p class="spider_text" style="text-indent: 2em;">
+                {% autoescape off %}
+                    {{ award.intro }}
+                {% endautoescape %}
+            </p>
+        </div>
+    </div>
+    <!-- 金蜘蛛介绍结束 -->
+
+    <!-- 评奖动态开始 -->
+    <div class="pure-g" id="spider-news">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_news.png' %}">
+        </div>
+        <ul class="mySlideshow">
+            {% for news in spider_news %}
+            <li>
+                <a href="{% url 'article_detail' news.id %}" target="_blank">
+                    <img id="news_slide_img" src="{{ MEDIA_URL }}{{ news.image }}">
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="news_slide">
+            <ul>
+                {% for news in spider_news %}
+                <li>
+                    <a href="{% url 'article_detail' news.id %}" target="_blank" style="color: white;">{{ news.title |truncatechars:20 }}</a>
+                    <span style="float: right;color: white;">{{ news.add_time |date:"Y-m-d"}}</span>
+                    <hr/>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- 评奖动态结束 -->
+
+    <!-- 奖项设置开始 -->
+    <div class="section-cases" id="spider-setting">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_settings.png' %}">
+        </div>
+
+        {% for sort in award_sorts %}
+            <div class="cases">
+                <div class="spider_text" id="{{ sort.id }}-{{ sort.order }}">{{ sort.title }}</div>
+
+                <table class="award_table"><tr>
+                {% for iterm in sort.get_iterms %}
+                    <td>
+                        <p>
+                            <img style="width: 24em;height: 35em;margin-right: 1em;" src="{{ MEDIA_URL }}{{ iterm.image }}">
+                        </p>
+                    </td>
+                {% endfor %}
+                </tr>
+                </table>
+
+                {% if sort.get_iterms.count == 4 %}
+                    <a href="javascript:void(0);"><div class="view_all" id="{{ sort.id }}">显示全部</div></a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <!-- 奖项设置结束 -->
+
+    <!-- 专家评审团开始 -->
+    <div class="section-cases" id="spider-specialist">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_specialist.png' %}">
+        </div>
+        <div class="sub_title_detail pure-u-1-1">
+            <img src="{% static 'images/specialist.png' %}">
+        </div>
+    </div>
+    <!-- 专家评审团结束 -->
+
+    <!-- 评选流程开始 -->
+    <div class="section-cases" id="spider-process">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_process.png' %}">
+        </div>
+        <div class="sub_title_detail pure-u-1-1">
+            <img src="{% static 'images/process.png' %}">
+        </div>
+    </div>
+    <!-- 评选流程结束 -->
+
+    <!-- 往期回顾开始 -->
+    <div class="section-cases" id="spider-history">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_history.png' %}">
+        </div>
+        <div class="sub_title_detail pure-u-1-1">
+            <ul style="list-style-type: none;padding-left: 0px;">
+                {% for history in latest_awards %}
+                <li><a href="{% url 'spider' history.id %}" target="_blank">
+                    <span class="spider_text">{{ history.title }}</span>
+                </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- 往期回顾结束 -->
+
+    <!-- 战略合作单位开始 -->
+    <div class="section-cases" id="spider-friends">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_friends.png' %}">
+        </div>
+        <div class="sub_title_detail pure-u-1-1">
+            <ul style="list-style-type: none;padding-left: 0px;">
+                {% for company in co_companies %}
+                <li>
+                    <span class="spider_text">{{ company }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- 战略合作单位结束 -->
+
+    <!-- 战略合作平台开始 -->
+    <div class="section-cases">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_platform.png' %}">
+        </div>
+        <div class="sub_title_detail pure-u-1-1">
+            <img src="{% static 'images/platform.png' %}">
+        </div>
+    </div>
+    <!-- 战略合作平台结束 -->
+
+    <!-- 媒体支持开始 -->
+    <div class="section-cases">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_media.png' %}">
+        </div>
+        <div class="sub_title_detail pure-u-1-1">
+            <img src="{% static 'images/media.png' %}">
+        </div>
+    </div>
+    <!-- 媒体支持结束 -->
+
+    <!-- 指定拍摄机构开始 -->
+    <div class="section-cases">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_film.png' %}">
+        </div>
+        <div class="sub_title_detail pure-u-1-1">
+            <img src="{% static 'images/film.png' %}">
+        </div>
+    </div>
+    <!-- 指定拍摄机构结束 -->
+
+    <!-- 联系我们开始 -->
+    <div class="section-cases" id="spider-contact">
+        <div class="sub_title pure-u-1-1">
+            <img src="{% static 'images/title_contact.png' %}">
+        </div>
+
+        <div class="contact_details_spider">
+          <ul>
+            {% for contact in our_contacts %}
+                {% if forloop.counter == 1 %}
+                    <li><img src="{% static 'images/phone.png' %}" alt=""><span class="spider_text">
+                        {{ contact.title }}：{{ contact.detail}}
+                    </span></li>
+                {% endif %}
+                {% if forloop.counter == 2 %}
+                    <li><img src="{% static 'images/email.png' %}" alt=""><span class="spider_text">
+                        {{ contact.title }}：{{ contact.detail}}
+                    </span></li>
+                {% endif %}
+                {% if forloop.counter == 3 %}
+                    <li><img src="{% static 'images/location.png' %}" alt="">
+                    <span class="spider_text">
+                        {{ contact.title }}：{{ contact.detail}}
+                    </span></li>
+                {% endif %}
+            {% endfor %}
+          </ul>
+
+            {% for contact in our_contacts %}
+                {% if forloop.counter == 4 %}
+                    <div class="ercode_2">
+                      <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 5 %}
+                    <div class="ercode_3">
+                      <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+
+    </div>
+    <!-- 联系我们结束 -->
+</div>
+<!-- 内容结束 -->
+{% endblock %}
+
+{% block custom_js %}
+<script type="text/javascript" src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lazyload.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slider.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/index_alliance.js' %}"></script>
+{% endblock %}

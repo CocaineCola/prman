@@ -10,4 +10,39 @@ $(function() {
         height: 400
     });
 
+    // 金蜘蛛奖 点击显示全部 展示全部参选作品
+    $('.view_all').click(function(e) {
+        sort_id = $('.view_all').attr("id");
+        console.log(sort_id);
+        $.ajax({
+            type: 'GET',
+            url: '/all_award_cases/'+sort_id+'/',
+            dataType: 'json',
+            success: function(response){
+
+                var data = response.list;
+                var length = response.list.length;
+
+                var result = '';
+                /****业务逻辑块：实现拼接html内容并append到页面*********/
+                for(var i=0; i<length; i++){
+                    if(i%4 == 0){
+                        result += '<tr>'
+                    }
+                    result +='<td><p><img style="width: 24em;height: 35em;margin-right: 1em;" src="/media/'+data[i].fields.image+'"></p></td>';
+                    if(i%4 == 0){
+                        result += '</tr>'
+                    }
+                }
+                $('.award_table').append(result);
+                /*******************************************/
+
+                /*隐藏more按钮*/
+                $(".view_all").hide();
+            },
+            error: function(xhr, type){
+                alert('服务器异常!');
+            }
+    });
+    });
 });

@@ -18,8 +18,7 @@ class GoldenSpiderAward(models.Model):
     co_sponsor = models.CharField(max_length=100, verbose_name=u"协办方")
     date = models.CharField(max_length=100, verbose_name=u"举办日期")
     address = models.CharField(max_length=300, verbose_name=u"举办地址")
-    intro = UEditorField(blank=True, verbose_name=u"奖项介绍", width=900, height=300, imagePath="org/ueditor/",
-                                        filePath="org/ueditor/", default='')
+    intro = models.CharField(max_length=5000, verbose_name=u"奖项介绍")
     specialists = models.ImageField(blank=True, upload_to="org/%Y/%m", verbose_name=u"专家评审团", max_length=100)
     process = models.ImageField(blank=True, upload_to="org/%Y/%m", verbose_name=u"评选流程", max_length=100)
     co_companies = models.CharField(max_length=1000, verbose_name=u"战略合作单位")
@@ -66,6 +65,11 @@ class AwardSort(models.Model):
     title = models.CharField(max_length=100, verbose_name=u"奖项名称")
     order = models.IntegerField(default=0, verbose_name=u"排序")
     add_time = models.DateTimeField(default=datetime.now)
+
+    def get_iterms(self):
+        # 获取奖项下的参选作品
+        return self.awarditerm_set.all().order_by("order")[0:4]
+    get_iterms.short_description = "参选作品"
 
     class Meta:
         verbose_name = u"金蜘蛛奖奖项"

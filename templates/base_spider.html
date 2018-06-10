@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1;IE=edge">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="bookmark" href="{% static 'images/favicon.ico' %}">
+    <!-- 取消移动端自动检测电话号码和email地址 -->
+    <meta name="format-detection" content="telphone=no, email=no" />
+    <meta name="author" contect="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="robots" content="index,follow" />
+    <!-- 禁止手机端百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <title>{% block title %}普曼传媒{% endblock %}</title>
+    <!-- build:css styles/optimized.min.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    {% block custom_css %}
+    {% endblock %}
+  </head><!-- head结束 -->
+  <body>
+    {% block content %}
+    {% endblock %}
+
+    <!-- build:js lib/lib.min.js -->
+    {% block custom_js %}{% endblock %}
+    <!-- endbuild -->
+
+  </body>
+</html>

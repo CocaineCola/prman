@@ -27,7 +27,6 @@ class GoldenSpiderAwardAdmin(object):
     list_filter = ['title', 'sponsor', 'co_sponsor', 'date', 'address', 'intro', 'specialists', 'process',
                     'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'order', 'add_time']
     relfield_style = 'fk-ajax'
-    style_fields = {"intro": "ueditor"}
     model_icon = 'fa fa-university'
 
 

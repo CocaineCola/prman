@@ -53,6 +53,7 @@ class AllianceView(View):
     """
     视频联盟页面内容
     """
+
     def get(self, request):
         # 所有文章
         all_articles = Article.objects.all()
@@ -81,6 +82,7 @@ class CenterView(View):
     """
     视频中心页面内容
     """
+
     def get(self, request):
         # 所有文章
         all_articles = Article.objects.all()
@@ -115,7 +117,7 @@ class MoreCasesView(View):
         page = int(page)
         begin_index = 5 + (page - 1) * 5
         end_index = 10 + (page - 1) * 5
-        more_cases = Article.objects.all().filter(tag='our_cases').order_by("order")[begin_index:end_index]
+        more_cases = Article.objects.filter(tag='our_cases').order_by("order")[begin_index:end_index]
         if more_cases is None:
             return HttpResponse('{"status":"fail", "msg":"没有更多案例了！"}', content_type='application/json')
         else:
@@ -177,31 +179,52 @@ class GoldenSpiderAwardView(View):
     """
     金蜘蛛奖页面内容
     """
-    def get(self, request):
-        # 最近三届
-        awards = GoldenSpiderAward.objects.all().order_by("order")[0:3]
 
-        # 最近一届金蜘蛛奖的内容
-        award = awards[0]
+    def get(self, request, spider_id=""):
+        # 最近三届金蜘蛛奖的标题和链接
+        latest_awards = GoldenSpiderAward.objects.all().order_by("order")[0:3]
+
+        # 如果没有传过来id, 则取最近一届金蜘蛛奖的内容
+        if spider_id == "":
+            award = latest_awards[0]
+        else:
+            award = GoldenSpiderAward.objects.get(id=spider_id)
+
+        # 金蜘蛛相关资讯top5
+        spider_news = Article.objects.filter(golden_spider_award=award.id).order_by("order")[0:5]
 
         # 战略合作单位需要特殊处理一下
-        co_companies = award.strip('|').split('|')
+        co_companies = award.co_companies.strip('|').split('|')
 
         # 奖项设置
-        award_sorts = AwardSort.objects.filter(golden_spider_award=award.id).all()
+        award_sorts = AwardSort.objects.filter(golden_spider_award=award.id).order_by("order")
 
         # 奖项下的参赛作品
-        award_iterms = []
-        for award_sort in award_sorts:
-            award_iterms.append(AwardIterm.objects.filter(award_sort=award_sort.id).order_by("order")[0:4])
+        # award_iterms = AwardIterm.objects.filter(golden_spider_award=award.id).order_by("order")[0:4]
 
         # 联系方式
         our_contacts = Article.objects.filter(tag='our_contacts').order_by("order")
 
-        return render(request, "center.html", {
+        return render(request, "spider.html", {
+            "spider_news": spider_news,
+            "latest_awards": latest_awards,
             "award": award,
             "co_companies": co_companies,
             "award_sorts": award_sorts,
-            "award_iterms": award_iterms,
             "our_contacts": our_contacts,
         })
+
+
+class AllAwardCacesView(View):
+    """
+    所有参奖作品
+    """
+
+    def get(self, request, sort):
+        all_award_cases = AwardIterm.objects.filter(award_sort_id=sort).order_by("order")[4:]
+        if all_award_cases is None:
+            return HttpResponse('{"status":"fail", "msg":"没有更多案例了！"}', content_type='application/json')
+        else:
+            more_cases = serializers.serialize("json", all_award_cases)
+            return HttpResponse('{"status":"success", "msg":"success", "list":' + more_cases + '}',
+                                content_type='application/json')
