@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/response.css' %}">
+{% endblock %}
+
+{% block title %}视频中心{% endblock %}
+
+{% block content %}
+
+<!-- 头图开始 -->
+<div>
+    <img class="head_img" src="{% static 'images/lunbo_1.jpg' %}">
+</div>
+<!-- 头图结束 -->
+
+<!-- 内容开始 -->
+<div class="content">
+
+    <!-- 联盟轮播资讯开始 -->
+    <div class="pure-g">
+        <div class="sub_title pure-u-1-1">
+            <h2>联盟资讯</h2>
+        </div>
+        <ul class="mySlideshow">
+            {% for news in center_news %}
+            <li>
+                <a href="{% url 'article_detail' news.id %}" target="_blank">
+                    <img id="news_slide_img" src="{{ MEDIA_URL }}{{ news.image }}">
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="news_slide">
+            <ul>
+                {% for news in center_news %}
+                <li>
+                    <a href="{% url 'article_detail' news.id %}" target="_blank">{{ news.title |truncatechars:20}}</a>
+                    <span style="float: right;color: #2F6178;">{{ news.add_time |date:"Y-m-d"}}</span>
+                    <hr/>
+                </li>
+                {% endfor %}
+                <span style="float: right;"><a href="{% url 'article_list_default'%}">MORE >></a></span>
+            </ul>
+        </div>
+    </div>
+    <!-- 联盟轮播资讯结束 -->
+
+    <!-- 联盟简介开始 -->
+    <div class="section-services pure-g" id="section-services">
+        <div class="sub_title pure-u-1-1">
+            <h2>中心简介</h2>
+        </div>
+        <div class="media_spread pure-u-1-1">
+            {% autoescape off %}
+                {{ center_intro.detail }}
+            {% endautoescape %}
+        </div>
+    </div>
+    <!-- 联盟简介结束 -->
+
+    <!-- 中心任务开始 -->
+    <div class="section-services pure-g" id="section-services">
+        <div class="sub_title pure-u-1-1">
+            <h2>中心任务</h2>
+        </div>
+{#        {% for service in our_services %}#}
+        <div class="media_spread pure-u-sm-1-4">
+            <img src="{% static 'images/media_spread.png' %}" alt="">
+        </div>
+        <div class="media_spread pure-u-sm-1-4">
+            <img src="{% static 'images/media_spread.png' %}" alt="">
+        </div>
+        <div class="media_spread pure-u-sm-1-4">
+            <img src="{% static 'images/media_spread.png' %}" alt="">
+        </div>
+        <div class="media_spread pure-u-sm-1-4">
+            <img src="{% static 'images/media_spread.png' %}" alt="">
+        </div>
+{#        {% endfor %}#}
+    </div>
+    <!-- 中心任务结束 -->
+
+    <!-- 组织机构开始 -->
+    <div class="section-platforms pure-g" id="section-platforms">
+        <div class="sub_title pure-u-1-1">
+            <h2>组织机构</h2>
+        </div>
+
+        <div class="center_organization">
+            <h3 class="center_organization_title"><span>主任</span></h3>
+            <h4>钟大年</h4>
+
+            <h3 class="center_organization_title"><span>执行主任</span></h3>
+            <h4>夏陈安</h4>
+
+            <h3 class="center_organization_title"><span>副主任</span></h3>
+            <h4>高晓虹 &nbsp;&nbsp; 中国传媒大学新闻传播学部部长</h4>
+            <h4>龚&nbsp;宇 &nbsp;&nbsp; 爱奇艺创始人兼首席执行官</h4>
+            <h4>汪文斌 &nbsp;&nbsp; 中国网络电视台总经理兼总编辑</h4>
+            <h4>古永锵 &nbsp;&nbsp; 优酷土豆集团董事长兼首席执行官</h4>
+
+            <h3 class="center_organization_title"><span>秘书长</span></h3>
+            <h4>王晓红</h4>
+
+            <h3 class="center_organization_title"><span>副秘书长</span></h3>
+            <h4>徐广宇 &nbsp;&nbsp; 任&nbsp;怡</h4>
+
+            <h3 class="center_organization_title"><span>理事会秘书长</span></h3>
+            <h4>刘&nbsp;春</h4>
+
+            <h3 class="center_organization_title"><span>理事会副秘书长</span></h3>
+            <h4>耿晓华 &nbsp;&nbsp; 陈丹青</h4>
+        </div>
+    </div>
+    <!-- 组织机构结束 -->
+
+    <!-- 联盟会员开始 -->
+    <div class="section-bros">
+        <div class="sub_title">
+            <h2>联盟会员</h2>
+        </div>
+        <img src="{{ MEDIA_URL }}{{ our_friends.first.image }}" alt="" width="1000px">
+    </div>
+    <!-- 联盟会员结束 -->
+</div>
+<!-- 内容结束 -->
+
+{% endblock %}
+
+{% block contacts %}
+    <div class="contact_details">
+          <ul>
+            {% for contact in our_contacts %}
+                {% if forloop.counter == 1 %}
+                    <li><img src="{% static 'images/phone.png' %}" alt=""><span>
+                        {{ contact.title }}：{{ contact.detail}}
+                    </span></li>
+                {% endif %}
+                {% if forloop.counter == 2 %}
+                    <li><img src="{% static 'images/email.png' %}" alt=""><span>
+                        {{ contact.title }}：{{ contact.detail}}
+                    </span></li>
+                {% endif %}
+                {% if forloop.counter == 3 %}
+                    <li><img src="{% static 'images/location.png' %}" alt=""><span>
+                        {{ contact.title }}：{{ contact.detail}}
+                    </span></li>
+                {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+
+        {% for contact in our_contacts %}
+            {% if forloop.counter == 4 %}
+                <div class="ercode_2">
+                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
+                </div>
+            {% endif %}
+            {% if forloop.counter == 5 %}
+                <div class="ercode_3">
+                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
+                </div>
+            {% endif %}
+        {% endfor %}
+{% endblock %}
+
+{% block custom_js %}
+<script type="text/javascript" src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lazyload.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slider.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/index_alliance.js' %}"></script>
+{% endblock %}

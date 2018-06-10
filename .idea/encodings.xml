@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/apps" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/extra_apps" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/extra_apps/DjangoUeditor" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/extra_apps/xadmin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/media" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/prman.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/prman/settings.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/requirements.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/static" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/static/css/bootstrap.min.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/css/font-awesome.min.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/css/img" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/fonts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/fonts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/fonts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/images/apple-watch.jpg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/images/lazyload-ph.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/images/lazyload-ph.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/images/lazyload-ph.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/images/pageload-spinner.gif" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/images/placeholder-image.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/img" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/js/blocs.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/js/blocs.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/js/bootstrap.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/js/jquery-2.1.0.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/js/lazysizes.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/js/unslider.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/article_detail.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/article_list.html" charset="UTF-8" />
+  </component>
+</project>

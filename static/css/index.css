@@ -1,0 +1,463 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  background-color: #fff;
+  font: 12px/1.5 Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
+  color: #666;
+}
+
+img[src=""], img:not([src]) {
+  opacity: 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+.ercode_1 img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  padding: 15px 0 15px 0;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+
+.navbar a {
+  transition: color 0.5s ease-in-out;
+}
+
+.top-nav {
+  background: rgba(0, 0, 0, .4) !important;
+  padding-bottom: 15px;
+}
+
+.logo {
+  width: 157px;
+  float: left;
+  margin-left: 60px;
+}
+
+/* 首页 */
+
+.section-home {
+  height: 500px;
+  background: url(../images/lunbo_1.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.menu button {
+  position: relative;
+  float: right;
+  padding: 4px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  border: 1px solid;
+  -webkit-appearance: button;
+  cursor: pointer;
+  background: transparent;
+}
+
+.menu button span {
+  padding: 2px 14px;
+  background: url(../images/list.png);
+  background-repeat: no-repeat;
+}
+
+.menu button:hover {
+  background: #000;
+}
+
+.menu ul, .menu ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu ul {
+  display: none;
+  margin-top: 40px;
+}
+
+.menu ul li {
+  padding: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.menu ul li a {
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.menu ul li.selected, .menu ul li:hover {
+  padding-bottom: 9px;
+  border-bottom: 3px solid #8CC455;
+}
+
+.menu ul li.selected a, .menu ul li:hover a {
+    color: #8CC455;
+}
+
+.header {
+  width: 1000px;
+  height: 74px;
+  margin: 0 auto;
+}
+
+.content {
+  width: 1000px;
+  height: auto;
+  margin: 0 auto 40px auto;
+}
+
+.section-services {
+  margin: 40px auto;
+  float: left;
+  width: inherit;
+  text-align:center;
+}
+
+.section-platforms {
+  margin: 40px auto;
+  float: left;
+  width: inherit;
+  text-align:center;
+}
+
+.sub_title {
+  text-align: center;
+}
+
+.sub_title h2 {
+  border-bottom: 3px solid #8CC455;
+  display: inline-grid;
+}
+
+.media_spread, .media_marketing, .marketing_plan {
+  float: left;
+  margin: 20px auto;
+}
+
+.media_spread img, .media_marketing img, .marketing_plan img {
+  width: 120px;
+}
+
+.section-services img {
+  width: 120px;
+}
+
+.section-services h3 {
+  margin-top: 0px;
+}
+
+.cases {
+  margin: 20px auto 0px auto
+}
+
+.cases tr td {
+  width: 21%;
+}
+
+.more {
+  float: right;
+  margin: 0px 25px 0px auto;
+}
+
+.section-contact {
+  background: #000000db;
+}
+
+.section-contact h2 {
+  color: white;
+}
+
+.section-contact ul {
+  list-style-type: none;
+}
+
+.section-contact li {
+  color: white;
+  width: 32em;
+  height: 2em;
+  margin-top: 18px;
+}
+
+.details {
+  width: 54%;
+  margin-left: 25%;
+  margin-top: 40px;
+  height: 170px;
+}
+
+.contact_details span, .final a {
+  color: white;
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+  float: left;
+}
+
+.details ul img {
+  width: 2em;
+  height: 2em;
+  float: left;
+}
+
+.contact_details, .ercode_2, ercode_3 {
+  float: left;
+}
+
+.ercode_3 img{
+  margin-left: 40px;
+}
+
+.final {
+  background: black;
+  height: 70px;
+  margin-top: 30px;
+}
+
+.about_us {
+  height: inherit;
+}
+
+.about_us a {
+  text-decoration: none;
+  line-height: 70px;
+}
+
+.about_us :first-child {
+  margin-left: 45%;
+}
+
+.about_us :last-child {
+  margin-left: 5%;
+}
+
+/* 当页面小于一定宽度时隐藏搜索框和二维码 */
+@media screen and (max-width:48em) {
+  .search, .ercode_1 {
+    display: none;
+  }
+}
+
+@media screen and (min-width:48em) {
+  .menu {
+    width: calc(100% - 487px);
+    float: left;
+  }
+  .navbar {
+    background-color: transparent;
+    padding-bottom: 15px;
+  }
+  .navbar .menu button {
+    display: none;
+  }
+  .navbar .menu ul {
+    display: block !important;
+    float: right;
+    margin-right: 50px;
+    margin-top: 0;
+  }
+  .menu ul li {
+    float: left;
+  }
+  .search {
+    width: 147px;
+    height: 25px;
+    float: left;
+    margin-top: 7px;
+    line-height: 43px;
+  }
+  .search_box {
+    float: left;
+    width: 145px;
+    line-height: 25px;
+    border: 1px solid #333;
+  }
+  .search_text {
+    width: 118px;
+    height: 25px;
+    border: none;
+    padding: 0px;
+    background-color: white;
+  }
+  .search-btn {
+    width: 27px;
+    height: 25px;
+    float: right;
+  }
+  .ercode_1 {
+    width: 76px;
+    height: 37px;
+    float: left;
+    margin: 0 15px;
+  }
+}
+
+/*---slide show skin---*/
+
+.edslider {
+  position: relative;
+}
+
+.edslider ul {
+  list-style: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.edslider>ul {
+  background: #fff;
+  display: block;
+  overflow: hidden;
+}
+
+.edslider>ul li {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.edslider a {
+  display: block;
+}
+
+.edslider a img {
+  border: 0;
+}
+
+.edslider .current {
+  z-index: 1 !important;
+}
+
+/*---controls---*/
+
+.edslider .controls {
+  top: 0;
+  height: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+.edslider .controls .navigator {
+  background-image: url(../images/sprite-navigator.png);
+  cursor: pointer;
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  overflow: hidden;
+  top: 225px;
+  transition: background .1s;
+}
+
+.edslider .controls .next {
+  background-position: 0 0;
+  right: 0;
+}
+
+.edslider .controls .prev {
+  background-position: 0 -50px;
+  left: 0;
+}
+
+.edslider .controls .next:hover, .edslider .controls .prev:hover {
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.edslider .controls .paginator {
+  position: relative;
+  text-align: center;
+  top: 470px;
+}
+
+.edslider .controls .paginator li {
+  background: rgba(0, 0, 0, .7);
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  margin: 0 3px;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.edslider .controls .paginator li.current, .edslider .controls .paginator li:hover, .edslider .progress {
+  background: rgba(255, 255, 255, .5);
+}
+
+.edslider .progress {
+  position: absolute;
+  top: 0;
+  height: 3px;
+  z-index: 2;
+}
+
+.head_img {
+  height: 500px;
+  width: 100%;
+}
+
+#news_slide_img {
+    width: 42em;
+    height: 34em;
+}
+
+.news_slide{
+    background-color: #E0ECF0;
+    margin-left: 3em;
+    font-size: 1.2em;
+    padding-right: 2em;
+    width: 42%;
+}
+
+.news_slide ul{
+    list-style-type: none;
+}
+
+.news_slide li{
+    padding-top: 20px;
+}
+
+.news_slide a{
+    text-decoration: none;
+    color: #2F6178;
+}
+
+.alliance_organization, .center_organization{
+    width: 100%;
+}
+
+.alliance_organization h3{
+    text-align: left;
+}
+
+.alliance_organization h3 span{
+    background-color: #d3e0e4;
+    padding: 5px 0px 5px 10px;
+}
+
+.center_organization_title {
+    background-color: #dbf0f7;
+}
+.center_organization h3 span {
+    padding: 5px 10px 5px 10px;
+}
