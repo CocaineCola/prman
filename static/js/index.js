@@ -6,15 +6,19 @@ $(function() {
         //failure_limit: 2 //加载2张可见区域外的图片,lazyload默认在找到第一张不在可见区域里的图片时则不再继续加载,但当HTML容器混乱的时候可能出现可见区域内图片并没加载出来的情况
     });
     $('.mySlideshow').edslider({
-        width: '100%',
+        width:'1920',
         height: 500
     });
-    $(window).scroll(function() {
-        if ($(".navbar").offset().top > 50) {
-            $(".navbar").addClass("top-nav");
-        } else {
-            $(".navbar").removeClass("top-nav");
-        }
+    $('.menu ul li').hover(function(e) {
+        $('.menu ul li').removeClass("selected");
+        $('.border-bottom').css('display', 'none');
+        $(this).find("p").css('display', 'block');
+    });
+    $('.menu ul li').click(function(e) {
+        $('.menu ul li').removeClass("selected");
+        $(this).addClass("selected");
+        $('.border-bottom').css('display', 'none');
+        $(this).find("p").css('display', 'block');
     });
     // 手机端使用
     $('#showMenu').click(function() {

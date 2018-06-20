@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_spider.html' %}
 {% load staticfiles %}
 
 {% block custom_css %}
@@ -12,7 +12,7 @@
 
 <!-- 头图开始 -->
 <div>
-    <img class="head_img" src="{% static 'images/lunbo_1.jpg' %}">
+    <img class="head_img" src="{% static 'images/alliance_top.jpg' %}">
 </div>
 <!-- 头图结束 -->
 
@@ -21,9 +21,6 @@
 
     <!-- 联盟轮播资讯开始 -->
     <div class="pure-g">
-        <div class="sub_title pure-u-1-1">
-            <h2>联盟资讯</h2>
-        </div>
         <ul class="mySlideshow">
             {% for news in alliance_news %}
             <li>
@@ -38,7 +35,7 @@
             <ul>
                 {% for news in alliance_news %}
                 <li>
-                    <a href="{% url 'article_detail' news.id %}" target="_blank">{{ news.title |truncatechars:20 }}</a>
+                    <a href="{% url 'article_detail' news.id %}" target="_blank">{{ news.title |truncatechars:18 }}</a>
                     <span style="float: right;color: #2F6178;">{{ news.add_time |date:"Y-m-d"}}</span>
                     <hr/>
                 </li>
@@ -48,83 +45,88 @@
         </div>
     </div>
     <!-- 联盟轮播资讯结束 -->
-
-    <!-- 联盟简介开始 -->
-    <div class="section-services pure-g" id="section-services">
-        <div class="sub_title pure-u-1-1">
-            <h2>联盟简介</h2>
-        </div>
-        <div class="media_spread pure-u-1-1">
-            {% autoescape off %}
-                {{ alliance_intro.detail }}
-            {% endautoescape %}
-        </div>
-    </div>
-    <!-- 联盟简介结束 -->
-
-    <!-- 组织机构开始 -->
-    <div class="section-platforms pure-g" id="section-platforms">
-        <div class="sub_title pure-u-1-1">
-            <h2>组织机构</h2>
-        </div>
-
-        <div class="alliance_organization">
-            <h3><span>机构设置：</span></h3>
-            <h4> 轮值主席、秘书长|副秘书长、联席主席单位</h4>
-            <h3><span>会员单位：</span></h3>
-            <h4> 常务理事会员单位、理事会员单位、普通会员单位</h4>
-        </div>
-    </div>
-    <!-- 组织机构结束 -->
-
-    <!-- 联盟会员开始 -->
-    <div class="section-bros">
-        <div class="sub_title">
-            <h2>联盟会员</h2>
-        </div>
-        <img src="{{ MEDIA_URL }}{{ our_friends.first.image }}" alt="" width="1000px">
-    </div>
-    <!-- 联盟会员结束 -->
 </div>
-<!-- 内容结束 -->
 
-{% endblock %}
+<div>
+    <img src="{% static 'images/alliance_bottom.jpg' %}">
+</div>
 
-{% block contacts %}
-    <div class="contact_details">
-          <ul>
-            {% for contact in our_contacts %}
-                {% if forloop.counter == 1 %}
-                    <li><img src="{% static 'images/phone.png' %}" alt=""><span>
-                        {{ contact.title }}：{{ contact.detail}}
-                    </span></li>
-                {% endif %}
-                {% if forloop.counter == 2 %}
-                    <li><img src="{% static 'images/email.png' %}" alt=""><span>
-                        {{ contact.title }}：{{ contact.detail}}
-                    </span></li>
-                {% endif %}
-                {% if forloop.counter == 3 %}
-                    <li><img src="{% static 'images/location.png' %}" alt=""><span>
-                        {{ contact.title }}：{{ contact.detail}}
-                    </span></li>
-                {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-
-        {% for contact in our_contacts %}
-            {% if forloop.counter == 4 %}
-                <div class="ercode_2">
-                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
-                </div>
-            {% endif %}
-            {% if forloop.counter == 5 %}
-                <div class="ercode_3">
-                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
-                </div>
-            {% endif %}
-        {% endfor %}
+{#    <!-- 联盟简介开始 -->#}
+{#    <div class="section-services pure-g" id="section-services">#}
+{#        <div class="sub_title pure-u-1-1">#}
+{#            <h2>联盟简介</h2>#}
+{#        </div>#}
+{#        <div class="media_spread pure-u-1-1">#}
+{#            {% autoescape off %}#}
+{#                {{ alliance_intro.detail }}#}
+{#            {% endautoescape %}#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- 联盟简介结束 -->#}
+{##}
+{#    <!-- 组织机构开始 -->#}
+{#    <div class="section-platforms pure-g" id="section-platforms">#}
+{#        <div class="sub_title pure-u-1-1">#}
+{#            <h2>组织机构</h2>#}
+{#        </div>#}
+{##}
+{#        <div class="alliance_organization">#}
+{#            <h3><span>机构设置：</span></h3>#}
+{#            <h4> 轮值主席、秘书长|副秘书长、联席主席单位</h4>#}
+{#            <h3><span>会员单位：</span></h3>#}
+{#            <h4> 常务理事会员单位、理事会员单位、普通会员单位</h4>#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- 组织机构结束 -->#}
+{##}
+{#    <!-- 联盟会员开始 -->#}
+{#    <div class="section-bros">#}
+{#        <div class="sub_title">#}
+{#            <h2>联盟会员</h2>#}
+{#        </div>#}
+{#        <img src="{{ MEDIA_URL }}{{ our_friends.first.image }}" alt="" width="1000px">#}
+{#    </div>#}
+{#    <!-- 联盟会员结束 -->#}
+{#</div>#}
+{#<!-- 内容结束 -->#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block contacts %}#}
+{#    <div class="contact_details">#}
+{#          <ul>#}
+{#            {% for contact in our_contacts %}#}
+{#                {% if forloop.counter == 1 %}#}
+{#                    <li><img src="{% static 'images/phone.png' %}" alt=""><span>#}
+{#                        {{ contact.title }}：{{ contact.detail}}#}
+{#                    </span></li>#}
+{#                {% endif %}#}
+{#                {% if forloop.counter == 2 %}#}
+{#                    <li><img src="{% static 'images/email.png' %}" alt=""><span>#}
+{#                        {{ contact.title }}：{{ contact.detail}}#}
+{#                    </span></li>#}
+{#                {% endif %}#}
+{#                {% if forloop.counter == 3 %}#}
+{#                    <li><img src="{% static 'images/location.png' %}" alt=""><span>#}
+{#                        {{ contact.title }}：{{ contact.detail}}#}
+{#                    </span></li>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#          </ul>#}
+{#        </div>#}
+{##}
+{#        {% for contact in our_contacts %}#}
+{#            {% if forloop.counter == 4 %}#}
+{#                <div class="ercode_2">#}
+{#                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>#}
+{#                </div>#}
+{#            {% endif %}#}
+{#            {% if forloop.counter == 5 %}#}
+{#                <div class="ercode_3">#}
+{#                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>#}
+{#                </div>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
 {% endblock %}
 
 {% block custom_js %}

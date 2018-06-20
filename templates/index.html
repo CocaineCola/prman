@@ -21,10 +21,16 @@
                 <span></span>
             </button>
             <ul class="clearfix">
-                <li class="selected"><a href="#section-home">首页</a></li>
-                <li><a href="#section-services">我们的服务</a></li>
-                <li><a href="#section-cases">我们的案例</a></li>
-                <li><a href="#section-contact">联系我们</a></li>
+                <li class="selected"><a href="#section-home">首页</a><p class="border-bottom"></p></li>
+                <li><a href="#section-services">我们的服务</a><p class="border-bottom" style="display: none"></p></li>
+                <li><a href="#section-cases">我们的案例</a><p class="border-bottom" style="display: none"></p></li>
+                <li><a href="#section-contact" id="about-us">关于我们</a><p class="border-bottom" style="display: none"></p>
+                    <div class="drop-menu">
+                        <p><a href="http://data.guduomedia.com/">骨朵榜单</a></p>
+                        <p><a href="http://ev.guduomedia.com/">骨朵专业版</a></p>
+                        <p><a href="https://d.guduomedia.com/m/intell_property">骨朵IP数据</a></p>
+                    </div>
+                </li>
             </ul>
         </div>
         <!-- menu结束 -->
@@ -39,8 +45,8 @@
         </div>
         <!-- 搜索框结束 -->
         <!-- 二维码开始 -->
-        <div class="ercode_1">
-            <a href="#"><img src="{% static 'images/code.png' %}" alt=""></a>
+        <div class="wechat">
+            <img src="{% static 'images/wechat.png' %}" alt=""><a href="#"></a>
         </div>
         <!-- 二维码结束 -->
     </div>
@@ -59,26 +65,33 @@
 </div>
 <!-- 轮播图结束 -->
 
-<!-- 内容开始 -->
-<div class="content">
-    <!-- 我们的服务开始 -->
-    <div class="section-services pure-g" id="section-services">
+<!-- 我们的服务开始 -->
+<div class="sanitary_towel">
+    <div class="section-services" id="section-services">
         <div class="sub_title pure-u-1-1">
-            <h2>我们的服务</h2>
+            <div style="color: white;">我们的服务<p id="sanitary_towel_border" class="border-bottom-title"></p></div>
         </div>
         {% for service in our_services %}
+        <article class="shade">
         <div class="media_spread pure-u-sm-1-3">
             <img src="{{ MEDIA_URL }}{{ service.image }}" alt="">
-            <h3>{{ service.title }}</h3>
         </div>
+        <div class="content-wrap">
+          <h1 class="entry-title"><a href="" class="featured-image">Music & Fashion</a></h1>
+        </div>
+        </article>
         {% endfor %}
     </div>
-    <!-- 我们的服务结束 -->
+</div>
+<!-- 我们的服务结束 -->
+
+<!-- 内容开始 -->
+<div class="content">
 
     <!-- 我们的案例开始 -->
     <div class="section-cases" id="section-cases">
         <div class="sub_title">
-            <h2>我们的案例</h2>
+            <div>我们的案例<p class="border-bottom-title"></p></div>
         </div>
         <table class="cases">
             {% for case in our_cases %}
@@ -107,14 +120,15 @@
                 {% if forloop.counter == 20 %}</tr>{% endif %}
             {% endfor %}
         </table>
-        <h3 class="more"><a href="javascript:void(0);">MORE&gt;&gt;</a></h3>
+        <h3 class="more"><a style="text-decoration: none;" href="javascript:void(0);">全部案例&gt;&gt;</a></h3>
+        <br style="clear: both;">
     </div>
     <!-- 我们的案例结束 -->
 
     <!-- 战略平台开始 -->
     <div class="section-platforms pure-g" id="section-platforms">
         <div class="sub_title pure-u-1-1">
-            <h2>战略平台</h2>
+            <div>战略同盟<p class="border-bottom-title"></p></div>
         </div>
         {% for platform in our_platforms %}
             <div class="{% cycle 'media_spread' 'media_marketing' 'marketing_plan' %} pure-u-sm-1-3">
@@ -127,11 +141,12 @@
     <!-- 合作伙伴开始 -->
     <div class="section-bros">
         <div class="sub_title">
-            <h2>合作伙伴</h2>
+            <div>合作伙伴<p class="border-bottom-title"></p></div>
         </div>
         <img src="{{ MEDIA_URL }}{{ our_friends.first.image }}" alt="" width="1000px">
     </div>
     <!-- 合作伙伴结束 -->
+
 </div>
 <!-- 内容结束 -->
 
@@ -164,11 +179,13 @@
             {% if forloop.counter == 4 %}
                 <div class="ercode_2">
                   <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
+                  <p class="ercode_title">公众号</p>
                 </div>
             {% endif %}
             {% if forloop.counter == 5 %}
-                <div class="ercode_3">
+                <div class="ercode_2">
                   <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
+                  <p class="ercode_title">头条号</p>
                 </div>
             {% endif %}
         {% endfor %}

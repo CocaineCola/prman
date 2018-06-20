@@ -20,7 +20,7 @@ from django.views.static import serve
 
 import xadmin
 from article.views import IndexView, ArticleListView, ArticleDetailView, MoreCasesView, AllianceView, CenterView, \
-    AllAwardCacesView, GoldenSpiderAwardView, GoldenSpiderPollView
+    AllAwardCacesView, GoldenSpiderAwardView, GoldenSpiderPollView, AllAwardHistoryView
 from prman.settings import MEDIA_ROOT
 from users.views import LogoutView, LoginView, RegisterView, AciveUserView, ForgetPwdView, ResetView, ModifyPwdView
 
@@ -46,6 +46,8 @@ urlpatterns = [
     url(r'^spider/(?P<spider_id>\w+)/$', GoldenSpiderAwardView.as_view(), name="spider"),
     # 显示全部参奖作品
     url(r'^all_award_cases/(?P<sort>\w+)/$', AllAwardCacesView.as_view(), name="all_award_cases"),
+    # 显示全部往期回顾
+    url(r'^all_award_history/$', AllAwardHistoryView.as_view(), name="all_award_cases"),
     # 金蜘蛛奖投票
     url(r'^poll/(?P<iterm_id>\w+)/$', GoldenSpiderPollView.as_view(), name="poll"),
     # 更多案例

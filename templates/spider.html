@@ -26,11 +26,6 @@
         </ul>
     </div>
 
-    <div class="sponsor">
-        <p class="spider_text">主办方：{{ award.sponsor }}</p>
-        <p class="spider_text" style="margin-bottom: 4em">联合主办方：{{ award.co_sponsor }}</p>
-    </div>
-
     <div class="right_label" style="float: right;">
         <ul style="list-style-type: none;padding-left: 0px;">
             {% for sort in award_sorts %}
@@ -39,11 +34,6 @@
             </li>
             {% endfor %}
         </ul>
-    </div>
-
-    <div class="sponsor">
-        <p class="spider_text">时间：{{ award.date }}</p>
-        <p class="spider_text">地点：{{ award.address }}</p>
     </div>
 
 </div>
@@ -103,25 +93,24 @@
         </div>
 
         {% for sort in award_sorts %}
-            <div class="cases">
-                <div class="spider_text" id="{{ sort.id }}-{{ sort.order }}">{{ sort.title }}</div>
+            <div>
+                <div class="spider_text" style="font-size: 20px;" id="{{ sort.id }}-{{ sort.order }}">{{ sort.title }}</div>
 
                 <table class="award_table"><tr>
                 {% for iterm in sort.get_iterms %}
                     <td>
                         <div class="back_img">
-                            <img style="width: 24em;height: 35em;" src="{{ MEDIA_URL }}{{ iterm.image }}">
+                            <img style="width: 240px;height: 360px;" src="{{ MEDIA_URL }}{{ iterm.image }}">
                             <div class='text_flow_img'>
                                 <span>{{ iterm.title }}</span>
+                            </div>
+                             <div class='poll_text'>
                                 <span id="poll_num-{{ iterm.id }}" style="color: red;">{{ iterm.fav_nums }}</span>
                                 <a href="javascript:void(0);">
                                     <img id="{{ iterm.id }}" class="poll" src="{% static 'images/poll.png' %}">
                                 </a>
-
                             </div>
                         </div>
-
-
                     </td>
                 {% endfor %}
                 </tr>
@@ -163,12 +152,13 @@
             <img src="{% static 'images/title_history.png' %}">
         </div>
         <div class="sub_title_detail pure-u-1-1">
-            <ul style="list-style-type: none;padding-left: 0px;">
+            <ul style="list-style-type: none;padding-left: 0px;" class="history_ul">
                 {% for history in latest_awards %}
                 <li><a href="{% url 'spider' history.id %}" target="_blank">
                     <span class="spider_text">{{ history.title }}</span>
                 </a></li>
                 {% endfor %}
+                <li><a href="javascript:void(0);"><div class="view_all_history">显示全部</div></a></li>
             </ul>
         </div>
     </div>
@@ -234,17 +224,17 @@
           <ul>
             {% for contact in our_contacts %}
                 {% if forloop.counter == 1 %}
-                    <li><img src="{% static 'images/phone.png' %}" alt=""><span class="spider_text">
+                    <li><img src="{% static 'images/phone_spider.png' %}" alt=""><span class="spider_text">
                         {{ contact.title }}：{{ contact.detail}}
                     </span></li>
                 {% endif %}
                 {% if forloop.counter == 2 %}
-                    <li><img src="{% static 'images/email.png' %}" alt=""><span class="spider_text">
+                    <li><img src="{% static 'images/email_spider.png' %}" alt=""><span class="spider_text">
                         {{ contact.title }}：{{ contact.detail}}
                     </span></li>
                 {% endif %}
                 {% if forloop.counter == 3 %}
-                    <li><img src="{% static 'images/location.png' %}" alt="">
+                    <li><img src="{% static 'images/location_spider.png' %}" alt="">
                     <span class="spider_text">
                         {{ contact.title }}：{{ contact.detail}}
                     </span></li>
@@ -253,17 +243,19 @@
           </ul>
 
             {% for contact in our_contacts %}
-                {% if forloop.counter == 4 %}
-                    <div class="ercode_2">
-                      <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
-                    </div>
-                {% endif %}
-                {% if forloop.counter == 5 %}
-                    <div class="ercode_3">
-                      <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
-                    </div>
-                {% endif %}
-            {% endfor %}
+            {% if forloop.counter == 4 %}
+                <div class="ercode_2">
+                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
+                  <p class="ercode_title">公众号</p>
+                </div>
+            {% endif %}
+            {% if forloop.counter == 5 %}
+                <div class="ercode_2">
+                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
+                  <p class="ercode_title">头条号</p>
+                </div>
+            {% endif %}
+        {% endfor %}
         </div>
 
 

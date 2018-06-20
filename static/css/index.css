@@ -1,42 +1,32 @@
 body {
   -webkit-font-smoothing: antialiased;
   background-color: #fff;
-  font: 12px/1.5 Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
-  color: #666;
-}
-
-img[src=""], img:not([src]) {
-  opacity: 0;
+  font-family:"Microsoft Yahei";
 }
 
 input:focus {
   outline: none;
 }
 
-.ercode_1 img {
+.wechat img {
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
+  margin-top: 0.3em;
 }
 
 .navbar {
-  position: fixed;
   width: 100%;
-  z-index: 99;
-  padding: 15px 0 15px 0;
   margin: 0 auto;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
 
 .navbar a {
   transition: color 0.5s ease-in-out;
 }
 
-.top-nav {
-  background: rgba(0, 0, 0, .4) !important;
-  padding-bottom: 15px;
+.navbar div{
+    margin-top: 0.5em;
 }
 
 .logo {
@@ -58,7 +48,7 @@ input:focus {
   position: relative;
   float: right;
   padding: 4px;
-  margin-top: 8px;
+
   margin-right: 15px;
   margin-bottom: 8px;
   border: 1px solid;
@@ -90,23 +80,51 @@ input:focus {
 
 .menu ul li {
   padding: 10px;
-  border-bottom: 1px solid #fff;
 }
 
 .menu ul li a {
-  color: #fff;
+  color: black;
   padding: 10px;
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
 }
 
-.menu ul li.selected, .menu ul li:hover {
-  padding-bottom: 9px;
-  border-bottom: 3px solid #8CC455;
+.border-bottom {
+    margin: 0 auto;
+    border-bottom: 3px solid #da2826;
+    width: auto;
 }
 
-.menu ul li.selected a, .menu ul li:hover a {
-    color: #8CC455;
+#sanitary_towel_border {
+    margin: 11px auto 0 auto;
+    border-bottom: 3px solid white;
+    width: 34px;
+}
+
+.border-bottom-title {
+    margin: 11px auto 0 auto;
+    border-bottom: 3px solid #da2826;
+    width: 34px;
+}
+
+.menu ul li a.selected, .menu ul li a:first-of-type:hover {
+    color: #da2826;
+}
+
+.drop-menu {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 2px 16px;
+
+}
+
+.menu ul li:hover .drop-menu {
+    display: block;
+    color: black;
 }
 
 .header {
@@ -118,51 +136,101 @@ input:focus {
 .content {
   width: 1000px;
   height: auto;
-  margin: 0 auto 40px auto;
+  margin: 60px auto 40px auto;
+}
+
+.sanitary_towel {
+    margin-top: 48px;
+    background-color: #e4443c;
+    height: 300px;
 }
 
 .section-services {
-  margin: 40px auto;
-  float: left;
-  width: inherit;
-  text-align:center;
+    width: 1000px;
+    height: auto;
+    margin: 0 auto 40px auto;
 }
 
 .section-platforms {
-  margin: 40px auto;
-  float: left;
+  margin: 0 auto;
   width: inherit;
   text-align:center;
 }
 
 .sub_title {
   text-align: center;
+    margin-top: 50px;
 }
 
-.sub_title h2 {
-  border-bottom: 3px solid #8CC455;
-  display: inline-grid;
+.sub_title div {
+  font-size: 24px;
 }
 
 .media_spread, .media_marketing, .marketing_plan {
   float: left;
-  margin: 20px auto;
+  margin: 18px auto;
 }
 
-.media_spread img, .media_marketing img, .marketing_plan img {
-  width: 120px;
+.media_spread:hover, .media_marketing:hover, .marketing_plan:hover {
+  background-color: #f1ecec;
 }
 
-.section-services img {
-  width: 120px;
+/** 遮罩开始 **/
+.shade {
+    float: left;
+	position: relative;
+    width: 33.3333%;
 }
+.content-wrap {
+	padding: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	display: table-cell;
+	vertical-align: middle;
+	overflow: hidden;
+}
+.content-wrap h1.entry-title {
+	display: table;
+	font-size: 110%;
+	height: 96%;
+	text-transform: uppercase;
+	width: 100%;
+	margin:0;
+}
+.featured-image {
+	display: table-cell;
+	position: relative;
+	transition: opacity .25s ease-in-out, background .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out, background .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out, background .25s ease-in-out;
+	vertical-align: middle;
+	z-index: 1;
+	color: #fff;
+	text-decoration: none;
+	opacity: 0;
+	padding: 10%;
+}
+.featured-image:hover {
+	opacity: 0.9;
+	color: #fff;
+	background: rgba(0,0,0,0.8);
+}
+.media_spread img {
+	display: block;
+}
+/** 遮罩结束 **/
 
 .section-services h3 {
   margin-top: 0px;
 }
 
 .cases {
-  margin: 20px auto 0px auto
+    margin: 40px auto 0px auto;
+    border-collapse: separate;
+    border-spacing: 0px 7px;
 }
 
 .cases tr td {
@@ -171,7 +239,11 @@ input:focus {
 
 .more {
   float: right;
-  margin: 0px 25px 0px auto;
+  margin: 0px 25px 5px auto;
+}
+
+.section-bros img {
+    margin-top: 40px;
 }
 
 .section-contact {
@@ -204,7 +276,6 @@ input:focus {
   color: white;
   display: block;
   font-size: 1em;
-  font-weight: bold;
   float: left;
 }
 
@@ -212,10 +283,17 @@ input:focus {
   width: 2em;
   height: 2em;
   float: left;
+  vertical-align: middle;
 }
 
-.contact_details, .ercode_2, ercode_3 {
-  float: left;
+.contact_details, .ercode_2 {
+    float: left;
+    padding-left: 30px;
+}
+
+.ercode_title {
+    text-align: center;
+    color: white;
 }
 
 .ercode_3 img{
@@ -247,7 +325,7 @@ input:focus {
 
 /* 当页面小于一定宽度时隐藏搜索框和二维码 */
 @media screen and (max-width:48em) {
-  .search, .ercode_1 {
+  .search, .wechat {
     display: none;
   }
 }
@@ -259,7 +337,6 @@ input:focus {
   }
   .navbar {
     background-color: transparent;
-    padding-bottom: 15px;
   }
   .navbar .menu button {
     display: none;
@@ -298,7 +375,7 @@ input:focus {
     height: 25px;
     float: right;
   }
-  .ercode_1 {
+  .wechat {
     width: 76px;
     height: 37px;
     float: left;
@@ -412,7 +489,7 @@ input:focus {
 }
 
 .head_img {
-  height: 500px;
+  height: auto;
   width: 100%;
 }
 
@@ -423,18 +500,19 @@ input:focus {
 
 .news_slide{
     background-color: #E0ECF0;
-    margin-left: 3em;
-    font-size: 1.2em;
-    padding-right: 2em;
+    margin-left: 40px;
+    font-size: 14px;
+    padding-right: 40px;
     width: 42%;
 }
 
 .news_slide ul{
     list-style-type: none;
+    margin-top: 30px;
 }
 
 .news_slide li{
-    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .news_slide a{

@@ -59,22 +59,19 @@ class AllianceView(View):
         all_articles = Article.objects.all()
 
         # 联盟轮播资讯top5
-        alliance_news = all_articles.filter(tag='alliance_news').order_by("order")[0:3]
+        alliance_news = all_articles.filter(tag='alliance_news').order_by("order")[0:5]
 
-        # 联盟简介
-        alliance_intro = all_articles.get(tag='alliance_intro')
-
-        # 合作伙伴
-        our_friends = all_articles.filter(tag='our_friends').order_by("order")[0:1]
-
-        # 联系方式
-        our_contacts = all_articles.filter(tag='our_contacts').order_by("order")
+        # # 联盟简介
+        # alliance_intro = all_articles.get(tag='alliance_intro')
+        #
+        # # 合作伙伴
+        # our_friends = all_articles.filter(tag='our_friends').order_by("order")[0:1]
+        #
+        # # 联系方式
+        # our_contacts = all_articles.filter(tag='our_contacts').order_by("order")
 
         return render(request, "alliance.html", {
             "alliance_news": alliance_news,
-            "alliance_intro": alliance_intro,
-            "our_friends": our_friends,
-            "our_contacts": our_contacts,
         })
 
 
@@ -90,20 +87,17 @@ class CenterView(View):
         # 视频中心轮播资讯top5
         center_news = all_articles.filter(tag='center_news').order_by("order")[0:5]
 
-        # 视频中心简介
-        center_intro = all_articles.get(tag='center_intro')
-
-        # 合作伙伴
-        our_friends = all_articles.filter(tag='our_friends').order_by("order")[0:1]
-
-        # 联系方式
-        our_contacts = all_articles.filter(tag='our_contacts').order_by("order")
+        # # 视频中心简介
+        # center_intro = all_articles.get(tag='center_intro')
+        #
+        # # 合作伙伴
+        # our_friends = all_articles.filter(tag='our_friends').order_by("order")[0:1]
+        #
+        # # 联系方式
+        # our_contacts = all_articles.filter(tag='our_contacts').order_by("order")
 
         return render(request, "center.html", {
             "center_news": center_news,
-            "center_intro": center_intro,
-            "our_friends": our_friends,
-            "our_contacts": our_contacts,
         })
 
 
@@ -114,10 +108,7 @@ class MoreCasesView(View):
 
     def get(self, request, page='2'):
         # 更多案例
-        page = int(page)
-        begin_index = 5 + (page - 1) * 5
-        end_index = 10 + (page - 1) * 5
-        more_cases = Article.objects.filter(tag='our_cases').order_by("order")[begin_index:end_index]
+        more_cases = Article.objects.filter(tag='our_cases').order_by("order")[10:]
         if more_cases is None:
             return HttpResponse('{"status":"fail", "msg":"没有更多案例了！"}', content_type='application/json')
         else:
@@ -227,6 +218,21 @@ class AllAwardCacesView(View):
         else:
             more_cases = serializers.serialize("json", all_award_cases)
             return HttpResponse('{"status":"success", "msg":"success", "list":' + more_cases + '}',
+                                content_type='application/json')
+
+
+class AllAwardHistoryView(View):
+    """
+    所有往期回顾
+    """
+
+    def get(self, request):
+        all_award_history = GoldenSpiderAward.objects.all().order_by("order")[3:]
+        if all_award_history is None:
+            return HttpResponse('{"status":"fail", "msg":"没有更多案例了！"}', content_type='application/json')
+        else:
+            all_award_history = serializers.serialize("json", all_award_history)
+            return HttpResponse('{"status":"success", "msg":"success", "list":' + all_award_history + '}',
                                 content_type='application/json')
 
 

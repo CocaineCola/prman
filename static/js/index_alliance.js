@@ -6,8 +6,8 @@ $(function() {
         //failure_limit: 2 //加载2张可见区域外的图片,lazyload默认在找到第一张不在可见区域里的图片时则不再继续加载,但当HTML容器混乱的时候可能出现可见区域内图片并没加载出来的情况
     });
     $('.mySlideshow').edslider({
-        width: '50%',
-        height: 400
+        width: 480,
+        height: 300
     });
 
     // 金蜘蛛奖 点击显示全部 展示全部参选作品
@@ -28,7 +28,11 @@ $(function() {
                     if(i%4 == 0){
                         result += '<tr>'
                     }
-                    result +='<td><p><img style="width: 24em;height: 35em;margin-right: 1em;" src="/media/'+data[i].fields.image+'"></p></td>';
+                    result +='<td>' +
+                        '<div class="back_img"><img style="width:240px;height:360px;" src="/media/'+data[i].fields.image+'"><div class="text_flow_img">' +
+                        '<span>'+data[i].fields.title+'</span></div><div class="poll_text"><span id="poll_num-'+data[i].fields.id+'" style="color:red;">' +
+                    data[i].fields.fav_nums + '</span><a href="javascript:void(0);"><img id="'+data[i].fields.id+'" class="poll" src="/static/images/poll.png"></a></div></div>'
+                        + '</td>';
                     if(i%4 == 0){
                         result += '</tr>'
                     }
@@ -60,6 +64,34 @@ $(function() {
                     var id = 'poll_num-'+iterm_id;
                     $('#'+id).html(parseInt($('#'+id).text())+1);
                 }
+            },
+            error: function(xhr, type){
+                alert('服务器异常!');
+            }
+    });
+    });
+
+    // 金蜘蛛奖 点击显示全部往期回顾
+    $('.view_all_history').click(function(e) {
+        $.ajax({
+            type: 'GET',
+            url: '/all_award_history/',
+            dataType: 'json',
+            success: function(response){
+
+                var data = response.list;
+                var length = response.list.length;
+
+                var result = '';
+                /****业务逻辑块：实现拼接html内容并append到页面*********/
+                for(var i=0; i<length; i++){
+                    result +='<li><a href="'+data[i].fields.id+'" target="_blank"><span class="spider_text">'+data[i].fields.title+'</span></a></li>'
+                }
+                $('.history_ul').append(result);
+                /*******************************************/
+
+                /*隐藏more按钮*/
+                $(".view_all_history").hide();
             },
             error: function(xhr, type){
                 alert('服务器异常!');
