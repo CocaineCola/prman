@@ -33,7 +33,7 @@ $(function() {
         $('.menu ul').css('display', 'none');
     });
 
-    // 我们的案例 点击MORE加载新的20个案例
+    // 我们的案例 点击MORE加载全部案例
     var page = 1;    /*计数器*/
     $('.more').click(function(e) {
         page = page + 1;
@@ -46,12 +46,22 @@ $(function() {
                 var data = response.list;
                 var length = response.list.length;
 
-                var result = '<tr>';
+                var result = '';
                 /****业务逻辑块：实现拼接html内容并append到页面*********/
                 for(var i=0; i<length; i++){
+                    if(i%5 == 0) {
+                        result += '<tr>';
+                    }
                     result +='<td><a href="/article_detail/'+ data[i].pk +'"><img src="/media/'+ data[i].fields.image +'"></a></td>';
+                    if((i+1)%5 == 0) {
+                        result += '</tr>';
+                    }
                 }
-                result += '</tr>';
+
+                if(length%5 != 0) {
+                    result += '</tr>';
+                }
+
                 $('.cases').append(result);
                 /*******************************************/
 
