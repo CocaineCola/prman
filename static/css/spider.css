@@ -20,9 +20,9 @@ body {
 }
 
 .top_text {
-    margin-top: 80em;
-    margin-bottom: 10em;
-    height: 20em;
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 
 .sub_title {
@@ -74,6 +74,12 @@ body {
 
 .top_text div {
     float: left;
+}
+
+.blank_label {
+    float: left;
+    width: 37%;
+    height: 300px;
 }
 
 .left_label, .right_label {

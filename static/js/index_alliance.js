@@ -10,6 +10,15 @@ $(function() {
         height: 300
     });
 
+    // 跟随屏幕移动
+    $(document).ready(function () {
+        var menuYloc = 300;
+        $(window).scroll(function () {
+            var offsetTop = menuYloc + $(window).scrollTop() + "px";
+            $("#top_text").animate({ top: offsetTop }, { duration: 600, queue: false });
+        });
+    });
+
     // 金蜘蛛奖 点击显示全部 展示全部参选作品
     $('.view_all').click(function(e) {
         sort_id = $('.view_all').attr("id");
