@@ -24,7 +24,7 @@
                 <li class="selected"><a href="#section-home">首页</a><p class="border-bottom"></p></li>
                 <li><a href="#section-services">我们的服务</a><p class="border-bottom" style="display: none"></p></li>
                 <li><a href="#section-cases">我们的案例</a><p class="border-bottom" style="display: none"></p></li>
-                <li><a href="#section-contact" id="about-us">关于我们</a><p class="border-bottom" style="display: none"></p>
+                <li><a href="javascript:void(0);">关于我们</a><p class="border-bottom" style="display: none"></p>
                     <div class="drop-menu">
                         <p><a href="http://data.guduomedia.com/">骨朵榜单</a></p>
                         <p><a href="http://ev.guduomedia.com/">骨朵专业版</a></p>
@@ -68,7 +68,7 @@
 <!-- 我们的服务开始 -->
 <div class="sanitary_towel">
     <div class="section-services" id="section-services">
-        <div class="sub_title pure-u-1-1">
+        <div class="sub_title pure-u-1-1" style="margin-bottom: 15px;">
             <div style="color: white;">我们的服务<p id="sanitary_towel_border" class="border-bottom-title"></p></div>
         </div>
         {% for service in our_services %}
@@ -77,7 +77,7 @@
             <img src="{{ MEDIA_URL }}{{ service.image }}" alt="">
         </div>
         <div class="content-wrap">
-          <h1 class="entry-title"><a href="" class="featured-image">Music & Fashion</a></h1>
+          <span class="entry-title"><a href="" class="featured-image">Music & Fashion</a></span>
         </div>
         </article>
         {% endfor %}
@@ -120,7 +120,7 @@
                 {% if forloop.counter == 20 %}</tr>{% endif %}
             {% endfor %}
         </table>
-        <h3 class="more"><a style="text-decoration: none;" href="javascript:void(0);">全部案例&gt;&gt;</a></h3>
+        <h3 class="more"><a style="text-decoration: none;" href="javascript:void(0);">MORE&gt;&gt;</a></h3>
         <br style="clear: both;">
     </div>
     <!-- 我们的案例结束 -->
@@ -154,41 +154,41 @@
 
 {% block contacts %}
     <div class="contact_details">
-          <ul>
-            {% for contact in our_contacts %}
-                {% if forloop.counter == 1 %}
-                    <li><img src="{% static 'images/phone.png' %}" alt=""><span>
-                        {{ contact.title }}：{{ contact.detail}}
-                    </span></li>
-                {% endif %}
-                {% if forloop.counter == 2 %}
-                    <li><img src="{% static 'images/email.png' %}" alt=""><span>
-                        {{ contact.title }}：{{ contact.detail}}
-                    </span></li>
-                {% endif %}
-                {% if forloop.counter == 3 %}
-                    <li><img src="{% static 'images/location.png' %}" alt=""><span>
-                        {{ contact.title }}：{{ contact.detail}}
-                    </span></li>
-                {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-
+      <ul>
         {% for contact in our_contacts %}
-            {% if forloop.counter == 4 %}
-                <div class="ercode_2">
-                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
-                  <p class="ercode_title">公众号</p>
-                </div>
+            {% if forloop.counter == 1 %}
+                <li><img src="{% static 'images/phone.png' %}" alt=""><span>
+                    {{ contact.title }}：{{ contact.detail}}
+                </span></li>
             {% endif %}
-            {% if forloop.counter == 5 %}
-                <div class="ercode_2">
-                  <a href="#"><img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt=""></a>
-                  <p class="ercode_title">头条号</p>
-                </div>
+            {% if forloop.counter == 2 %}
+                <li><img src="{% static 'images/email.png' %}" alt=""><span>
+                    {{ contact.title }}：{{ contact.detail}}
+                </span></li>
+            {% endif %}
+            {% if forloop.counter == 3 %}
+                <li><img src="{% static 'images/location.png' %}" alt=""><span>
+                    {{ contact.title }}：{{ contact.detail}}
+                </span></li>
             {% endif %}
         {% endfor %}
+      </ul>
+    </div>
+
+    {% for contact in our_contacts %}
+        {% if forloop.counter == 4 %}
+            <div class="ercode_2">
+              <img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt="">
+              <p class="ercode_title">公众号</p>
+            </div>
+        {% endif %}
+        {% if forloop.counter == 5 %}
+            <div class="ercode_2">
+              <img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt="">
+              <p class="ercode_title">头条号</p>
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endblock %}
 
 {% block custom_js %}

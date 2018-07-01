@@ -136,13 +136,12 @@ input:focus {
 .content {
   width: 1000px;
   height: auto;
-  margin: 60px auto 40px auto;
+  margin: 75px 452.5px 40px 452.5px;
 }
 
 .sanitary_towel {
-    margin-top: 48px;
     background-color: #e4443c;
-    height: 300px;
+    height: 356px;
 }
 
 .section-services {
@@ -158,8 +157,8 @@ input:focus {
 }
 
 .sub_title {
-  text-align: center;
-    margin-top: 50px;
+    text-align: center;
+    margin-top: 75px;
 }
 
 .sub_title div {
@@ -192,7 +191,7 @@ input:focus {
 	vertical-align: middle;
 	overflow: hidden;
 }
-.content-wrap h1.entry-title {
+.content-wrap span.entry-title {
 	display: table;
 	font-size: 110%;
 	height: 96%;
@@ -266,7 +265,7 @@ input:focus {
 }
 
 .details {
-  width: 54%;
+  width: 100%;
   margin-left: 25%;
   margin-top: 40px;
   height: 170px;
@@ -490,7 +489,7 @@ input:focus {
 
 .head_img {
   height: auto;
-  width: 100%;
+  width: 1920px;
 }
 
 #news_slide_img {
@@ -540,3 +539,43 @@ input:focus {
     padding: 5px 10px 5px 10px;
 }
 
+/*回到顶部*/
+body{height:3000px;}
+#rocket-to-top div {
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 149px;
+}
+#rocket-to-top .level-2 {
+    background: url("../images/top.png") no-repeat scroll -149px 0 transparent;
+    display: none;
+    height: 250px;
+    opacity: 0;
+    z-index: 1;
+}
+#rocket-to-top .level-3 {
+    background: none repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: block;
+    height: 150px;
+    z-index: 2;
+}
+#rocket-to-top {
+    background: url("../images/top.png") no-repeat scroll 0 0 transparent;
+    cursor: default;
+    display: block;
+    height: 250px;
+    margin: -125px 0 0;
+    overflow: hidden;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    top: 80%;
+    width: 149px;
+    z-index: 11;
+}
+/*回到顶部 end*/
