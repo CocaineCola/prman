@@ -194,7 +194,7 @@ input:focus {
 }
 .content-wrap span.entry-title {
 	display: table;
-	font-size: 110%;
+	font-size: 98%;
 	height: 96%;
 	text-transform: uppercase;
 	width: 100%;
@@ -211,7 +211,9 @@ input:focus {
 	color: #fff;
 	text-decoration: none;
 	opacity: 0;
-	padding: 10%;
+	text-align: justify;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 .featured-image:hover {
 	opacity: 0.9;
@@ -240,6 +242,10 @@ input:focus {
 .more {
   float: right;
   margin: 0px 25px 5px auto;
+}
+
+.more a{
+    color: #1c1514;
 }
 
 .section-bros img {

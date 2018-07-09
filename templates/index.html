@@ -26,9 +26,9 @@
                 <li><a href="#section-cases">我们的案例</a><p class="border-bottom" style="display: none"></p></li>
                 <li><a href="javascript:void(0);">关于我们</a><p class="border-bottom" style="display: none"></p>
                     <div class="drop-menu">
-                        <p><a href="http://data.guduomedia.com/">骨朵榜单</a></p>
-                        <p><a href="http://ev.guduomedia.com/">骨朵专业版</a></p>
-                        <p><a href="https://d.guduomedia.com/m/intell_property">骨朵IP数据</a></p>
+                        <p><a href="{% url 'article_detail' 52 %}">普曼联合</a></p>
+                        <p><a href="{% url 'article_detail' 53 %}">加入我们</a></p>
+                        <p><a href="{% url 'article_detail' 54 %}">联系我们</a></p>
                     </div>
                 </li>
             </ul>
@@ -71,16 +71,36 @@
         <div class="sub_title pure-u-1-1" style="margin-bottom: 15px;">
             <div style="color: white;">我们的服务<p id="sanitary_towel_border" class="border-bottom-title"></p></div>
         </div>
-        {% for service in our_services %}
         <article class="shade">
-        <div class="media_spread pure-u-sm-1-3">
-            <img src="{{ MEDIA_URL }}{{ service.image }}" alt="">
-        </div>
-        <div class="content-wrap">
-          <span class="entry-title"><a href="" class="featured-image">Music & Fashion</a></span>
-        </div>
+            <div class="media_spread pure-u-sm-1-3">
+                <img src="{{ MEDIA_URL }}{{ our_services.0.image }}" alt="">
+            </div>
+            <div class="content-wrap">
+              <span class="entry-title"><a href="" class="featured-image">
+                  包括广告代理（电视媒体、广播、户外媒体、报纸DM宣传单广告代理推广）与物料制作（微电影、纪录片、宣传片的拍摄与制作；媒体宣传物料设计与制作）
+              </a></span>
+            </div>
         </article>
-        {% endfor %}
+        <article class="shade">
+            <div class="media_spread pure-u-sm-1-3">
+                <img src="{{ MEDIA_URL }}{{ our_services.1.image }}" alt="">
+            </div>
+            <div class="content-wrap">
+              <span class="entry-title"><a href="" class="featured-image">
+                  提供精准化的营销闭环服务（新媒体整合营销、现象级事件营销、话题营销、H5 营销、原生广告（手绘漫画 与海报）、病毒视频、微电影、emoji、综艺影视植入、跨界整合营销等）与社交媒体托管服务（微博微信官微形象定位及视觉设计、官微语言风格体系定位、KOL推广）
+              </a></span>
+            </div>
+        </article>
+        <article class="shade">
+            <div class="media_spread pure-u-sm-1-3">
+                <img src="{{ MEDIA_URL }}{{ our_services.2.image }}" alt="">
+            </div>
+            <div class="content-wrap">
+              <span class="entry-title"><a href="" class="featured-image">
+                  包括高峰论坛、会展服务、品牌路演、新品发布、新闻发布会、演出服务、政府公关等活动的策划与执行
+              </a></span>
+            </div>
+        </article>
     </div>
 </div>
 <!-- 我们的服务结束 -->
@@ -132,7 +152,7 @@
         </div>
         {% for platform in our_platforms %}
             <div class="{% cycle 'media_spread' 'media_marketing' 'marketing_plan' %} pure-u-sm-1-3">
-                <a href="{{ platform.url }}"><img src="{{ MEDIA_URL }}{{ platform.image }}" alt=""></a>
+                <a href="{{ platform.url }}" target="_blank"><img src="{{ MEDIA_URL }}{{ platform.image }}" alt=""></a>
             </div>
         {% endfor %}
     </div>

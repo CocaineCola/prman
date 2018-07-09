@@ -14,8 +14,13 @@ $(function() {
     $(document).ready(function () {
         var menuYloc = 300;
         $(window).scroll(function () {
-            var offsetTop = menuYloc + $(window).scrollTop() + "px";
-            $("#top_text").animate({ top: offsetTop }, { duration: 600, queue: false });
+
+            var offsetTop = menuYloc + $(window).scrollTop() ;
+
+            if(offsetTop > 1500) {
+                $("#top_text").animate({ top: offsetTop + "px" }, { duration: 600, queue: false });
+            }
+
         });
     });
 
