@@ -5,6 +5,13 @@
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 <link rel="stylesheet" href="{% static 'css/response.css' %}">
 <link rel="stylesheet" href="{% static 'css/spider.css' %}">
+<style type="text/css">
+    body {
+        background: black url('{{ MEDIA_URL }}{{ award.background_img }}');
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+</style>
 {% endblock %}
 
 {% block title %}金蜘蛛奖{% endblock %}

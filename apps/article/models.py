@@ -25,6 +25,7 @@ class GoldenSpiderAward(models.Model):
     platforms = models.ImageField(blank=True, upload_to="org/%Y/%m", verbose_name=u"战略合作平台", max_length=100)
     media_orgs = models.ImageField(blank=True, upload_to="org/%Y/%m", verbose_name=u"媒体支持", max_length=100)
     shoot_orgs = models.ImageField(blank=True, upload_to="org/%Y/%m", verbose_name=u"指定拍摄机构", max_length=100)
+    background_img = models.ImageField(blank=True, upload_to="org/%Y/%m", verbose_name=u"金蜘蛛背景图", max_length=100)
     order = models.IntegerField(default=0, verbose_name=u"排序")
     add_time = models.DateTimeField(default=datetime.now)
 

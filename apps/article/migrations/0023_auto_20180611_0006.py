@@ -13,27 +13,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='awarditerm',
-            name='award_id',
-        ),
-        migrations.RemoveField(
-            model_name='awardsort',
-            name='award_id',
-        ),
-        migrations.AlterField(
-            model_name='awarditerm',
-            name='award_sort_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='article.AwardSort', verbose_name='关联的奖项id'),
-        ),
-        migrations.AlterField(
-            model_name='awarditerm',
-            name='golden_spider_award',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='article.GoldenSpiderAward', verbose_name='关联的金蜘蛛奖id'),
-        ),
-        migrations.AlterField(
-            model_name='goldenspideraward',
-            name='intro',
-            field=models.CharField(max_length=5000, verbose_name='奖项介绍'),
-        ),
+
     ]

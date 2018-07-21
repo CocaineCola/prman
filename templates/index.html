@@ -46,7 +46,7 @@
         <!-- 搜索框结束 -->
         <!-- 二维码开始 -->
         <div class="wechat">
-            <img src="{% static 'images/wechat.png' %}" alt=""><a href="#"></a>
+            <img src="{% static 'images/wechat.png' %}" alt=""><a href="https://mp.weixin.qq.com/s/rOb2rR1pw0UWDIExZKsZzg"></a>
         </div>
         <!-- 二维码结束 -->
     </div>
@@ -178,17 +178,17 @@
         {% for contact in our_contacts %}
             {% if forloop.counter == 1 %}
                 <li><img src="{% static 'images/phone.png' %}" alt=""><span>
-                    {{ contact.title }}：{{ contact.detail}}
+                    {{ contact.title }}：{{contact.desc}}
                 </span></li>
             {% endif %}
             {% if forloop.counter == 2 %}
                 <li><img src="{% static 'images/email.png' %}" alt=""><span>
-                    {{ contact.title }}：{{ contact.detail}}
+                    {{ contact.title }}：{{contact.desc}}
                 </span></li>
             {% endif %}
             {% if forloop.counter == 3 %}
                 <li><img src="{% static 'images/location.png' %}" alt=""><span>
-                    {{ contact.title }}：{{ contact.detail}}
+                    {{ contact.title }}：{{contact.desc}}
                 </span></li>
             {% endif %}
         {% endfor %}
@@ -199,7 +199,7 @@
         {% if forloop.counter == 4 %}
             <div class="ercode_2">
               <img src="{{ MEDIA_URL }}{{ contact.image }}" width="120em" alt="">
-              <p class="ercode_title">公众号</p>
+              <p class="ercode_title">微信号</p>
             </div>
         {% endif %}
         {% if forloop.counter == 5 %}

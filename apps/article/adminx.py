@@ -21,11 +21,11 @@ class ArticleAdmin(object):
 # 金蜘蛛奖
 class GoldenSpiderAwardAdmin(object):
     list_display = ['title', 'sponsor', 'co_sponsor', 'date', 'address', 'intro', 'specialists', 'process',
-                    'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'order', 'add_time']
+                    'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'background_img', 'order', 'add_time']
     search_fields = ['title', 'sponsor', 'co_sponsor', 'date', 'address', 'intro', 'specialists', 'process',
-                     'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'order']
+                     'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'background_img', 'order']
     list_filter = ['title', 'sponsor', 'co_sponsor', 'date', 'address', 'intro', 'specialists', 'process',
-                    'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'order', 'add_time']
+                    'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'background_img', 'order', 'add_time']
     relfield_style = 'fk-ajax'
     model_icon = 'fa fa-university'
 
