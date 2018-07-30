@@ -234,18 +234,18 @@
             {% for contact in our_contacts %}
                 {% if forloop.counter == 1 %}
                     <li><img src="{% static 'images/phone_spider.png' %}" alt=""><span class="spider_text">
-                        {{ contact.title }}：{{ contact.detail}}
+                        {{ contact.title }}：{{ contact.desc}}
                     </span></li>
                 {% endif %}
                 {% if forloop.counter == 2 %}
                     <li><img src="{% static 'images/email_spider.png' %}" alt=""><span class="spider_text">
-                        {{ contact.title }}：{{ contact.detail}}
+                        {{ contact.title }}：{{ contact.desc}}
                     </span></li>
                 {% endif %}
                 {% if forloop.counter == 3 %}
                     <li><img src="{% static 'images/location_spider.png' %}" alt="">
                     <span class="spider_text">
-                        {{ contact.title }}：{{ contact.detail}}
+                        {{ contact.title }}：{{ contact.desc}}
                     </span></li>
                 {% endif %}
             {% endfor %}
