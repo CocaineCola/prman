@@ -36,7 +36,6 @@ $(function() {
     // 我们的案例 点击MORE加载全部案例
     var page = 1;    /*计数器*/
     $('.more').click(function(e) {
-        page = page + 1;
         $.ajax({
             type: 'GET',
             url: '/more_cases/'+page+'/',
@@ -66,11 +65,7 @@ $(function() {
                 /*******************************************/
 
                 /*隐藏more按钮*/
-                if (response.msg == 'fail'){
-                    $(".more").hide();
-                } else {
-                    $(".more").show();
-                }
+                $(".more").hide();
             },
             error: function(xhr, type){
                 alert('服务器异常!');
