@@ -73,6 +73,12 @@ $(function() {
     });
     });
 
+    // 搜索框搜索
+    $('.search-btn').click(function(e) {
+        var keyword = $('.search_text').val();
+        window.open('/article_list/?keyword='+keyword);
+    });
+
     // jQuery火箭图标返回顶部代码
     var e = $("#rocket-to-top"),
     t = $(document).scrollTop(),

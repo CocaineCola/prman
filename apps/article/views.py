@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import View
 from pure_pagination import Paginator, PageNotAnInteger
+from django.db.models import Q
 
 from .models import Article, GoldenSpiderAward, AwardSort, AwardIterm
 
@@ -123,11 +124,20 @@ class ArticleListView(View):
     """
 
     def get(self, request, tag='alliance_news'):
+        # 查看是否有关键词需要搜索
+        keyword = request.GET.get('keyword', '')
+
         # 所有文章
         all_articles = Article.objects.all()
 
         # 资讯
-        alliance_news = all_articles.filter(tag=tag).order_by("order")[0:10]
+        if keyword == '':
+            alliance_news = all_articles.filter(tag=tag).order_by("order")[0:10]
+        else:
+            alliance_news = all_articles.filter(
+                Q(title__icontains=keyword) | Q(author__contains=keyword) | Q(desc__icontains=keyword)
+                | Q(detail__icontains=keyword) | Q(tag__icontains=keyword)).order_by("order")[0:10]
+
         # 对资讯进行分页
         try:
             page = request.GET.get('page', 1)
