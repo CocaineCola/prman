@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from pure_pagination import Paginator, PageNotAnInteger
 from django.db.models import Q
+from django.template.context_processors import csrf
 
 from .models import Article, GoldenSpiderAward, AwardSort, AwardIterm
 
@@ -153,7 +154,7 @@ class ArticleListView(View):
         return render(request, "article_list.html", {
             "alliance_news": alliance_news,
             "our_contacts": our_contacts,
-        })
+        }, csrf(request))
 
 
 class ArticleDetailView(View):
