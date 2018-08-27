@@ -7,10 +7,9 @@ from .models import Article, GoldenSpiderAward, AwardSort, AwardIterm
 
 
 class ArticleAdmin(object):
-    list_display = ['title', 'author', 'desc', 'order', 'detail', 'tag', 'golden_spider_award', 'url', 'image', 'click_nums',
+    list_display = ['title', 'author', 'desc', 'order', 'trim_detail', 'tag', 'golden_spider_award', 'url', 'image', 'click_nums',
                     'fav_nums', 'add_time']
-    search_fields = ['title', 'author', 'desc', 'order', 'detail', 'tag', 'golden_spider_award', 'url', 'image', 'click_nums',
-                     'fav_nums']
+    search_fields = ['title', 'author', 'desc', 'detail', 'tag']
     list_filter = ['title', 'author', 'desc', 'order', 'detail', 'tag', 'golden_spider_award', 'url', 'image', 'click_nums',
                    'fav_nums', 'add_time']
     relfield_style = 'fk-ajax'
@@ -22,8 +21,7 @@ class ArticleAdmin(object):
 class GoldenSpiderAwardAdmin(object):
     list_display = ['title', 'sponsor', 'co_sponsor', 'date', 'address', 'intro', 'specialists', 'process',
                     'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'background_img', 'order', 'add_time']
-    search_fields = ['title', 'sponsor', 'co_sponsor', 'date', 'address', 'intro', 'specialists', 'process',
-                     'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'background_img', 'order']
+    search_fields = ['title']
     list_filter = ['title', 'sponsor', 'co_sponsor', 'date', 'address', 'intro', 'specialists', 'process',
                     'co_companies', 'platforms', 'media_orgs', 'shoot_orgs', 'background_img', 'order', 'add_time']
     relfield_style = 'fk-ajax'
@@ -33,7 +31,7 @@ class GoldenSpiderAwardAdmin(object):
 # 金蜘蛛奖奖项
 class AwardSortAdmin(object):
     list_display = ['golden_spider_award', 'title', 'order', 'add_time']
-    search_fields = ['golden_spider_award', 'title', 'order']
+    search_fields = ['title']
     list_filter = ['golden_spider_award', 'title', 'order', 'add_time']
     relfield_style = 'fk-ajax'
     model_icon = 'fa fa-university'
@@ -42,7 +40,7 @@ class AwardSortAdmin(object):
 # 金蜘蛛奖参选作品
 class AwardItermAdmin(object):
     list_display = ['golden_spider_award', 'award_sort_id', 'title', 'image', 'order', 'fav_nums', 'add_time']
-    search_fields = ['golden_spider_award', 'award_sort_id', 'title', 'image', 'order', 'fav_nums']
+    search_fields = ['title']
     list_filter = ['golden_spider_award', 'award_sort_id', 'title', 'image', 'order', 'fav_nums', 'add_time']
     relfield_style = 'fk-ajax'
     model_icon = 'fa fa-university'

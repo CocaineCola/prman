@@ -59,6 +59,14 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+    # 判断字段长度，超出部分以省略号代替
+    def trim_detail(self):
+        if len(str(self.detail))>65:
+            return '{}...'.format(str(self.detail)[0:65])
+        else:
+            return str(self.detail)
+
+
 
 # 金蜘蛛奖奖项
 class AwardSort(models.Model):
