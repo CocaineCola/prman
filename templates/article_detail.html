@@ -85,17 +85,17 @@
             {% for contact in our_contacts %}
                 {% if forloop.counter == 1 %}
                     <li><img src="{% static 'images/phone.png' %}" alt=""><span>
-                        {{ contact.title }}：{{ contact.detail}}
+                        {{ contact.title }}：{{ contact.desc}}
                     </span></li>
                 {% endif %}
                 {% if forloop.counter == 2 %}
                     <li><img src="{% static 'images/email.png' %}" alt=""><span>
-                        {{ contact.title }}：{{ contact.detail}}
+                        {{ contact.title }}：{{ contact.desc}}
                     </span></li>
                 {% endif %}
                 {% if forloop.counter == 3 %}
                     <li><img src="{% static 'images/location.png' %}" alt=""><span>
-                        {{ contact.title }}：{{ contact.detail}}
+                        {{ contact.title }}：{{ contact.desc}}
                     </span></li>
                 {% endif %}
             {% endfor %}
