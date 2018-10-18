@@ -18,6 +18,7 @@
     width: 100%;
     position: absolute;
     z-index: 1;
+    width: 1920px;
 }
 
 .sub_title {
